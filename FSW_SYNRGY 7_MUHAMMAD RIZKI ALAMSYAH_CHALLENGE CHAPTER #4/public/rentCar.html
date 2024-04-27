@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Challenge 4</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+
+    <!-- Feather Icon -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link href="./css/style.example.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header">
+      <nav class="navbar navbar-expand-md bg-body-tertiary">
+        <div class="container-fluid">
+          <a href="index.html">
+            <img
+              src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710400256/logo_g0diue.png"
+              alt=""
+              class="fluid"
+            />
+          </a>
+          <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="offcanvas"
+            data-bs-target="#offcanvasNavbar"
+            aria-controls="offcanvasNavbar"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div
+            class="offcanvas offcanvas-end"
+            tabindex="-1"
+            id="offcanvasNavbar"
+            aria-labelledby="offcanvasNavbarLabel"
+          >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasNavbarLabel">BCR</h5>
+              <button
+                type="button"
+                class="btn-close text-reset"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              ></button>
+            </div>
+
+            <div class="offcanvas-body">
+              <div class="navbar-nav ms-auto">
+                <a class="nav-link" aria-current="page" href="#our-services"
+                  >Our Services</a
+                >
+                <a class="nav-link" href="#why-us">Why Us</a>
+                <a class="nav-link" href="#testimonial">Testimonial</a>
+                <a class="nav-link" href="#faq">FAQ</a>
+                <button class="btn btn-success">Register</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <!-- End Header -->
+
+    <!-- Hero -->
+    <section id="hero">
+      <div class="row flex-lg-row-reverse align-items-center">
+        <div class="deskripsi col-lg-4 order-lg-last">
+          <h2 class="display-6 fw-bold lh-2 mb-3">
+            Sewa & Rental Mobil Terbaik di kawasan (Lokasimu)
+          </h2>
+          <p class="lead">
+            Selamat datang di Binar Car Rental. Kami menyediakan mobil kualitas
+            terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
+            untuk sewa mobil selama 24 jam.
+          </p>
+          <button class="btn btn-success">Mulai Sewa Mobil</button>
+        </div>
+
+        <div class="mobil col-lg-7 order-lg-first">
+          <div class="row justify-content-end">
+            <div class="col-10">
+              <img
+                src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710400118/img_car_lhk3me.png"
+                class="gambar d-block mx-lg-auto img-fluid"
+                alt=""
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End Hero -->
+
+    <!-- searchbar -->
+    <div class="container">
+      <div class="card">
+        <div class="card-body">
+          <div class="container">
+            <div class="row d-flex align-items-end">
+              <!-- card -->
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="selectElement" class="text-start"
+                    >Tipe Driver</label
+                  >
+                  <select class="form-select" id="selectElement">
+                    <option disabled selected>Pilih Tipe Driver</option>
+                    <option>Dengan Sopir</option>
+                    <option>Tanpa Sopir (Lepas Kunci)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col-md-2">
+                <div class="form-group">
+                  <label for="inputElement" class="text-start">Tanggal</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    id="inputElement"
+                    placeholder="Enter something..."
+                  />
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="selectElement" class="text-start"
+                    >Waktu Jemput/Ambil</label
+                  >
+                  <div class="input-group">
+                    <select class="form-control" id="selectElementWaktu">
+                      <option disabled selected value="">pilih waktu</option>
+                      <script>
+                        for (let i = 0; i < 24; i++) {
+                          const formattedHour = i < 10 ? '0' + i : i; // Format jam dengan menambahkan '0' di depan jika jam kurang dari 10
+                          document.write(
+                            '<option value="' +
+                              formattedHour +
+                              ':00">' +
+                              formattedHour +
+                              ':00 WIB</option>'
+                          );
+                        }
+                      </script>
+                    </select>
+                    <span class="input-group-text" id="basic-addon1">
+                      <div class="input-icon">
+                        <i class="user" data-feather="clock"></i>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="form-group">
+                  <label for="inputElement" class="text-start"
+                    >Jumlah Penumpang (Opsional)</label
+                  >
+                  <div class="input-group">
+                    <input
+                      type="text"
+                      class="form-control bi-border-right"
+                      placeholder="Input group example"
+                      aria-label="Input group example"
+                      aria-describedby="basic-addon1"
+                      id="jumlah-penumpang"
+                    />
+                    <span class="input-group-text" id="basic-addon1">
+                      <div class="input-icon">
+                        <i class="user" data-feather="users"></i>
+                      </div>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-1">
+                <button class="btn btn-success" id="load-btn">Cari</button>
+                <!-- <button id="clear-btn">Clear</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- searchbar -->
+
+    <!-- card -->
+    <br /><br />
+    <div class="container">
+      <div class="row row-cols-1 row-cols-md-3 g-4" id="cars-container"></div>
+    </div>
+
+    <!-- footer -->
+    <footer class="py-5" id="footer">
+      <div class="container">
+        <div class="row align-items-stretch">
+          <div class="col-12 col-md-4 mb-3">
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <p>Jalan Suroyo No. 161 Mayangan Kota Probolonggo 672000</p>
+              </li>
+              <li class="nav-item mb-2">
+                <p>binarcarrental@gmail.com</p>
+              </li>
+              <li class="nav-item mb-2">
+                <p>081-233-334-808</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="navigation col-6 col-md-2 mb-3">
+            <ul class="nav flex-column">
+              <li class="nav-item mb-2">
+                <a href="#our-services" class="nav-link p-1">Our Services</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#why-us" class="nav-link p-1">Why Us</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#testimonial" class="nav-link p-1">Testimonial</a>
+              </li>
+              <li class="nav-item mb-2">
+                <a href="#faq" class="nav-link p-1">FAQ</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-3 col-md-1 mb-3">
+            <p>Connect with us</p>
+            <div class="d-flex flex-column flex-sm-row">
+              <ul class="list-unstyled d-flex flex-row m-0 p-0">
+                <li class="me-2 py-1">
+                  <a href="https://www.facebook.com/binaracademy/"
+                    ><img
+                      src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710472120/icon_facebook_piwh5m.svg"
+                      alt=""
+                  /></a>
+                </li>
+                <li class="me-2 py-1">
+                  <a href="https://www.instagram.com/academybinar/"
+                    ><img
+                      src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710472120/icon_instagram_d0byq1.svg"
+                      alt=""
+                  /></a>
+                </li>
+                <li class="me-2 py-1">
+                  <a href="#"
+                    ><img
+                      src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710472120/icon_twitter_fgbe9g.svg"
+                      alt=""
+                  /></a>
+                </li>
+                <li class="me-2 py-1">
+                  <a href="#"
+                    ><img
+                      src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710472120/icon_mail_uvhffc.svg"
+                      alt=""
+                  /></a>
+                </li>
+                <li class="me-1 py-1">
+                  <a href="#"
+                    ><img
+                      src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710472120/icon_twitch_a4kcto.svg"
+                      alt=""
+                  /></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="col-md-1 col-md-2 mb-3">
+            <p>Copyright Binar 2022</p>
+            <div class="d-flex flex-column flex-sm-row">
+              <a href="index.html"
+                ><img
+                  src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710400256/logo_g0diue.png"
+                  alt=""
+                  class="img-fluid"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End footer -->
+
+    <!-- ads -->
+    <script type="text/javascript" src="./scripts/binar.js"></script>
+    <script type="text/javascript" src="./scripts/app.example.js"></script>
+    <script type="text/javascript" src="./scripts/car.example.js"></script>
+    <!-- <script type="text/javascript" src="./scripts/main.example.js"></script> -->
+  </body>
+
+  <!-- Bootstrap -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"
+  ></script>
+
+  <!-- Feather Icon -->
+  <script src="https://unpkg.com/feather-icons"></script>
+
+  <!-- Feather Js -->
+  <script>
+    feather.replace();
+  </script>
+</html>
