@@ -6,7 +6,7 @@ class App {
     this.inputTanggal = document.getElementById('inputElement');
     this.inputWaktu = document.getElementById('selectElementWaktu');
 
-    this.loadButton.disabled = true;
+    // this.loadButton.disabled = true;
   }
 
   async init() {
@@ -37,6 +37,8 @@ class App {
     const valTanggal = this.inputTanggal.value;
     const valWaktu = this.inputWaktu.value;
 
+    const valTypeDriver = document.getElementById('selectElementd').value;
+
     console.log('Input Penumpang:', valPenumpang);
     console.log('Input Tanggal:', valTanggal);
     console.log('Input Waktu:', valWaktu);
@@ -45,6 +47,13 @@ class App {
 
     const cars = await Binar.listCars((car) => {
       let result = true;
+
+      // Logika pemfilteran berdasarkan tipe driver yang dipilih
+      if (valTypeDriver && valTypeDriver !== 'Pilih Tipe Driver') {
+        result = car.typeDriver
+          .toLowerCase()
+          .includes(valTypeDriver.toLowerCase());
+      }
 
       if (!isNaN(parseInt(valPenumpang))) {
         result = car.capacity === parseInt(valPenumpang);
@@ -124,6 +133,7 @@ class App {
     });
 
     this.renderCars(cars); // Render the cars
+    feather.replace();
     console.log(cars);
   };
 

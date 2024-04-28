@@ -41,29 +41,29 @@ class Car {
 
   render() {
     return `
-        <div class="col">
-          <div class="card">
-            <img src="${this.image}" class="img-fluid card-img-top" alt="..." />
+        <div class="col-md">
+          <div class="card" style="height: 700px;" alt="...">
+            <img src="${this.image}" class="img-fluid card-img-top" style="width: 100%; height: 300px; object-fit: cover;" alt="..." />
             <div class="card-body d-flex flex-column">
-              <h5 class="card-title">${this.manufacture} ${this.model} /${this.type}</h5>
-              <h5 class="lead font-weight-bold">Rp 430.000 / hari</h5>
+            <h5 class="card-title fw-light">${this.manufacture} ${this.model} / ${this.type}</h5>
+            <p class="lead fw-bold">${this.rentPerDay} / hari</p>
               <p class="card-text"> ${this.description} </p>
-              <p class="card-text"> ${this.availableAt} </p>
+          
               <div class="card-info d-flex flex-column gap-2">
                 <div class="d-flex gap-3 justify-content-start">
-                  <span><i class="icon" data-feather="users"></i></span>
+                  <span><i class="icon" data-feather="users" style="color: #8a8a8a;" ></i></span>
                   <p>${this.capacity} Orang</p>
                 </div>
                 <div class="d-flex gap-3 justify-content-start">
-                  <span><i class="icon" data-feather="settings"></i></span>
+                  <span><i class="icon" data-feather="settings" style="color: #8a8a8a;"></i></span>
                   <p>${this.transmission}</p>
                 </div>
                 <div class="d-flex gap-3 justify-content-start">
-                  <span><i class="icon" data-feather="calendar"></i></span>
+                  <span><i class="icon" data-feather="calendar" style="color: #8a8a8a;"></i></span>
                   <p>Tahun ${this.year}</p>
                 </div>
               </div>
-              <button class="btn btn-success w-100 mt-auto">Pilih Mobil</button>
+              <button class="btn btn-success w-100 mt-auto" style="background-color: limegreen; border-color: limegreen;">Pilih Mobil</button>
             </div>
           </div>
         </div>

@@ -29,8 +29,15 @@ class Binar {
       // const availableAt = new Date(car.availableAt);
       // Convert availableAt to Date object and then to ISO string
       // const availableAtUTC = new Date(Date.parse(car.availableAt));
+
+      // Mendefinisikan pilihan untuk typeDriver
+      const typeDriverOptions = ['dengan kunci', 'lepas kunci'];
+      // Memilih secara acak salah satu dari pilihan tersebut
+      const randomTypeDriver =
+        typeDriverOptions[Math.floor(Math.random() * typeDriverOptions.length)];
       return {
         ...car,
+        typeDriver: randomTypeDriver,
         // availableAt: availableAtUTC.toISOString(),
       };
     });

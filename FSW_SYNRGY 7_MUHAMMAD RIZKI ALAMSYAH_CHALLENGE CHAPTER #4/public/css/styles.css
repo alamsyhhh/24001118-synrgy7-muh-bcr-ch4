@@ -5,6 +5,11 @@ html {
   overflow-x: hidden;
 }
 
+:root {
+  --primary: #0d28a6;
+  --limegreen: #5cb85f;
+}
+
 body {
   font-family: Helvetica, sans-serif;
 }
@@ -52,8 +57,8 @@ body {
   /* padding: 8px 12px; */
   /* height: 36px; */
   width: fit-content;
-  background-color: #5cb85f;
-  border-color: #5cb85f;
+  background-color: limegreen;
+  border-color: limegreen;
   font-size: 19px;
   font-weight: bold;
   gap: 10px;
@@ -88,11 +93,11 @@ body {
   margin: 30px 100px 16px 0px;
 }
 
-#hero .row .deskripsi button {
+#hero .row .deskripsi a {
   width: fit-content;
   height: 36px;
-  background-color: #5cb85f;
-  border-color: #5cb85f;
+  background-color: limegreen;
+  border-color: limegreen;
   font-size: 14px;
   font-weight: bold;
   gap: 10px;
@@ -100,7 +105,7 @@ body {
   margin: 40px 100px 16px 0px;
 }
 
-#hero .row .deskripsi button:hover {
+#hero .row .deskripsi a:hover {
   background-color: green;
   border-color: green;
 }
@@ -211,7 +216,7 @@ body {
 
 .owl-carousel .owl-nav button.owl-next:hover,
 .owl-carousel .owl-nav button.owl-prev:hover {
-  background-color: #5cb85f;
+  background-color: limegreen;
   margin-right: 26px;
   border: none;
 }
@@ -279,8 +284,8 @@ body {
 }
 
 #started .card-body .btn {
-  background: #5cb85f;
-  border-color: #5cb85f;
+  background: limegreen;
+  border-color: limegreen;
   width: 145px;
   height: 36px;
   padding: 8px 12px;
@@ -362,6 +367,44 @@ body {
   gap: 16px;
   padding: 16px 0px;
 }
+
+/*--------------------------------------------------------------
+# SearchBar
+--------------------------------------------------------------*/
+#searchbar {
+  margin-top: -40px;
+  /* max-height: 110px; */
+  /* width: 1300px; */
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+#searchbar button {
+  background-color: limegreen;
+  border-color: limegreen;
+  max-width: 90px;
+}
+
+#searchbar .text-sm {
+  font-size: 12px;
+}
+
+#searchbar .pick {
+  border-right: none;
+}
+
+#searchbar .pick-icon {
+  background-color: #fff;
+  border-left: none;
+}
+
+#searchbar .inp-icon {
+  color: #8a8a8a;
+}
+
+/* Hide the calendar icon on date input */
+/* input[type='date']::-webkit-calendar-picker-indicator {
+  display: none;
+} */
 
 @media (max-width: 2050px) {
   #hero {
@@ -561,6 +604,10 @@ body {
     line-height: 20px;
     margin: 5px 100px 16px 0px;
   }
+
+  #searchbar .text-start {
+    font-size: 12px;
+  }
 }
 
 @media (max-width: 1215px) {
@@ -639,6 +686,18 @@ body {
     width: 100%;
     margin-top: 8px;
   }
+
+  #searchbar {
+    margin-top: -15px;
+  }
+
+  /* #searchbar button {
+    width: 70px;
+  }
+
+  #searchbar .text-start {
+    font-size: smaller;
+  } */
 }
 
 @media (max-width: 1200px) {

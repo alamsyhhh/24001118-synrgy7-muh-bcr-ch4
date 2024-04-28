@@ -38,7 +38,7 @@ function onRequest(req, res) {
     case '/':
       req.url = 'index.html';
       break;
-    case '/search':
+    case '/cars':
       req.url = 'rentCar.html';
       break;
     // Tambahkan penanganan rute lain jika diperlukan

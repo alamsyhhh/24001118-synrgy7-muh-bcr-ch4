@@ -23,9 +23,6 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
     />
 
-    <!-- Feather Icon -->
-    <script src="https://unpkg.com/feather-icons"></script>
-
     <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css" />
     <link href="./css/style.example.css" rel="stylesheet" />
@@ -35,7 +32,7 @@
     <header id="header">
       <nav class="navbar navbar-expand-md bg-body-tertiary">
         <div class="container-fluid">
-          <a href="index.html">
+          <a href="/">
             <img
               src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710400256/logo_g0diue.png"
               alt=""
@@ -98,7 +95,7 @@
             terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
             untuk sewa mobil selama 24 jam.
           </p>
-          <button class="btn btn-success">Mulai Sewa Mobil</button>
+          <a href="/cars" class="btn btn-success">Mulai Sewa Mobil</a>
         </div>
 
         <div class="mobil col-lg-7 order-lg-first">
@@ -118,47 +115,61 @@
 
     <!-- searchbar -->
     <div class="container">
-      <div class="card">
+      <div class="card" id="searchbar">
         <div class="card-body">
           <div class="container">
-            <div class="row d-flex align-items-end">
-              <!-- card -->
-              <div class="col-md-3">
+            <div class="row gx-3 d-flex align-items-end">
+              <!-- Tipe Driver -->
+              <div class="col-lg-3">
                 <div class="form-group">
                   <label for="selectElement" class="text-start"
                     >Tipe Driver</label
                   >
-                  <select class="form-select" id="selectElement">
+                  <select class="form-select" id="selectElementd">
                     <option disabled selected>Pilih Tipe Driver</option>
-                    <option>Dengan Sopir</option>
-                    <option>Tanpa Sopir (Lepas Kunci)</option>
+                    <option value="dengan kunci">Dengan Sopir</option>
+                    <option value="lepas kunci">
+                      Tanpa Sopir (Lepas Kunci)
+                    </option>
                   </select>
                 </div>
               </div>
 
-              <div class="col-md-2">
+              <!-- Date -->
+              <div class="col-lg-2">
                 <div class="form-group">
                   <label for="inputElement" class="text-start">Tanggal</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="inputElement"
-                    placeholder="Enter something..."
-                  />
+                  <div class="input-group">
+                    <input
+                      type="date"
+                      class="form-control"
+                      id="inputElement"
+                      placeholder="Input tanggal..."
+                    />
+                    <!-- <span class="pick-icon input-group-text" id="basic-addon1">
+                      <div class="input-icon">
+                        <i class="inp-icon user" data-feather="calendar"></i>
+                      </div>
+                    </span> -->
+                  </div>
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <!-- Hours -->
+              <div class="col-lg-3">
                 <div class="form-group">
                   <label for="selectElement" class="text-start"
                     >Waktu Jemput/Ambil</label
                   >
                   <div class="input-group">
-                    <select class="form-control" id="selectElementWaktu">
-                      <option disabled selected value="">pilih waktu</option>
+                    <select class="pick form-control" id="selectElementWaktu">
+                      <option disabled selected hidden value="">
+                        Pilih Waktu
+                      </option>
                       <script>
                         for (let i = 0; i < 24; i++) {
-                          const formattedHour = i < 10 ? '0' + i : i; // Format jam dengan menambahkan '0' di depan jika jam kurang dari 10
+                          // Format jam dengan menambahkan '0' di depan jika jam kurang dari 10
+                          const formattedHour = i < 10 ? '0' + i : i;
                           document.write(
                             '<option value="' +
                               formattedHour +
@@ -169,16 +180,17 @@
                         }
                       </script>
                     </select>
-                    <span class="input-group-text" id="basic-addon1">
+                    <span class="pick-icon input-group-text" id="basic-addon1">
                       <div class="input-icon">
-                        <i class="user" data-feather="clock"></i>
+                        <i class="inp-icon user" data-feather="clock"></i>
                       </div>
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-3">
+              <!-- total passenger  -->
+              <div class="col-lg-3">
                 <div class="form-group">
                   <label for="inputElement" class="text-start"
                     >Jumlah Penumpang (Opsional)</label
@@ -186,25 +198,29 @@
                   <div class="input-group">
                     <input
                       type="text"
-                      class="form-control bi-border-right"
-                      placeholder="Input group example"
+                      class="pick form-control bi-border-right"
+                      placeholder="Jumlah Penumpang"
                       aria-label="Input group example"
                       aria-describedby="basic-addon1"
                       id="jumlah-penumpang"
                     />
-                    <span class="input-group-text" id="basic-addon1">
+                    <span class="pick-icon input-group-text" id="basic-addon1">
                       <div class="input-icon">
-                        <i class="user" data-feather="users"></i>
+                        <i class="inp-icon user" data-feather="users"></i>
                       </div>
                     </span>
                   </div>
                 </div>
               </div>
 
-              <div class="col-md-1">
-                <button class="btn btn-success" id="load-btn">Cari</button>
+              <!-- button search -->
+              <div class="search col-lg-1">
+                <button class="btn btn-success" id="load-btn">
+                  <span class="text-sm">Cari Mobil</span>
+                </button>
                 <!-- <button id="clear-btn">Clear</button> -->
               </div>
+              <!--  -->
             </div>
           </div>
         </div>
@@ -299,7 +315,7 @@
           <div class="col-md-1 col-md-2 mb-3">
             <p>Copyright Binar 2022</p>
             <div class="d-flex flex-column flex-sm-row">
-              <a href="index.html"
+              <a href="/"
                 ><img
                   src="https://res.cloudinary.com/dmuuypm2t/image/upload/v1710400256/logo_g0diue.png"
                   alt=""
@@ -312,7 +328,7 @@
     </footer>
     <!-- End footer -->
 
-    <!-- ads -->
+    <!-- js -->
     <script type="text/javascript" src="./scripts/binar.js"></script>
     <script type="text/javascript" src="./scripts/app.example.js"></script>
     <script type="text/javascript" src="./scripts/car.example.js"></script>
@@ -331,6 +347,9 @@
 
   <!-- Feather Js -->
   <script>
-    feather.replace();
+    // feather.replace();
+    document.addEventListener('DOMContentLoaded', function () {
+      feather.replace();
+    });
   </script>
 </html>
