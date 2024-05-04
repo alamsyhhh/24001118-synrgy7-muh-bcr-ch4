@@ -1,54 +1,65 @@
+// import Binar from '../scripts/binar.js';
+// import Car from '../scripts/car.js';
+
 class App {
   constructor() {
+    // Inisialisasi elemen-elemen DOM yang diperlukan
     this.loadButton = document.getElementById('load-btn');
     this.carContainerElement = document.getElementById('cars-container');
     this.penumpang = document.getElementById('jumlah-penumpang');
     this.inputTanggal = document.getElementById('inputElement');
     this.inputWaktu = document.getElementById('selectElementWaktu');
+    this.inputTypeDriver = document.getElementById('selectElementd');
 
-    // this.loadButton.disabled = true;
+    // Menonaktifkan tombol "Load" pada awalnya
+    this.loadButton.disabled = true;
   }
 
   async init() {
+    // Memuat data mobil saat aplikasi dimulai
     await this.load();
+    // Menambahkan event listener untuk tombol "Load"
     this.loadButton.addEventListener('click', this.run);
 
     // Menambahkan event listener untuk memeriksa input setiap kali terjadi perubahan
     this.inputTanggal.addEventListener('input', this.checkInputs);
-    // this.inputWaktu.addEventListener('input', this.checkInputs);
+    this.inputWaktu.addEventListener('input', this.checkInputs);
   }
 
+  // Method untuk memeriksa apakah input telah diisi
   checkInputs = () => {
     // Memeriksa apakah setiap bidang yang diperlukan telah diisi
     // const isPenumpangFilled = this.penumpang.value.trim() !== '';
+    const isTypeDriver = this.inputTypeDriver.value.trim() !== '';
     const isTanggalFilled = this.inputTanggal.value.trim() !== '';
-    // const isWaktuFilled = this.inputWaktu.value.trim() !== '';
+    const isWaktuFilled = this.inputWaktu.value.trim() !== '';
 
     // Mengaktifkan atau menonaktifkan tombol Load berdasarkan hasil pemeriksaan
     this.loadButton.disabled = !(
       // isPenumpangFilled &&
-      isTanggalFilled
-      // &&isWaktuFilled
+      (isTypeDriver && isTanggalFilled && isWaktuFilled)
     );
   };
 
   run = async () => {
+    // Mendapatkan nilai dari input
     const valPenumpang = this.penumpang.value;
     const valTanggal = this.inputTanggal.value;
     const valWaktu = this.inputWaktu.value;
+    const valTypeDriver = this.inputTypeDriver.value;
 
-    const valTypeDriver = document.getElementById('selectElementd').value;
+    // console.log('Input Penumpang:', valPenumpang);
+    // console.log('Input Tanggal:', valTanggal);
+    // console.log('Input Waktu:', valWaktu);
 
-    console.log('Input Penumpang:', valPenumpang);
-    console.log('Input Tanggal:', valTanggal);
-    console.log('Input Waktu:', valWaktu);
-
+    // Membersihkan tampilan mobil sebelum menampilkan hasil pencarian baru
     this.clear();
 
+    // Memanggil method listCars dari Binar dengan filter yang diberikan
     const cars = await Binar.listCars((car) => {
       let result = true;
 
-      // Logika pemfilteran berdasarkan tipe driver yang dipilih
+      // Logika filtering berdasarkan tipe driver, jumlah penumpang, tanggal, dan waktu
       if (valTypeDriver && valTypeDriver !== 'Pilih Tipe Driver') {
         result = car.typeDriver
           .toLowerCase()
@@ -58,21 +69,6 @@ class App {
       if (!isNaN(parseInt(valPenumpang))) {
         result = car.capacity === parseInt(valPenumpang);
       }
-
-      // if (valTanggal) {
-      //   // Filter based on date only
-      //   const carDate = new Date(car.availableAt);
-      //   const selectedDate = new Date(valTanggal);
-
-      //   result =
-      //     result &&
-      //     carDate.toISOString().split('T')[0] ===
-      //       selectedDate.toISOString().split('T')[0];
-
-      //   console.log('Car Date:', carDate.toISOString().split('T')[0]);
-      //   console.log('Selected Date:', selectedDate.toISOString().split('T')[0]);
-      //   console.log('Filter by Date:', result);
-      // }
 
       if (valTanggal) {
         // Mengambil tanggal mobil dalam waktu setempat
@@ -88,9 +84,9 @@ class App {
         // Membandingkan tanggal mobil dan tanggal yang dipilih
         result = result && carDate.getTime() === selectedDate.getTime();
 
-        console.log('Car Date:', carDate.toISOString().split('T')[0]);
-        console.log('Selected Date:', selectedDate.toISOString().split('T')[0]);
-        console.log('Filter by Date:', result);
+        // console.log('Car Date:', carDate.toISOString().split('T')[0]);
+        // console.log('Selected Date:', selectedDate.toISOString().split('T')[0]);
+        // console.log('Filter by Date:', result);
       }
 
       if (valWaktu) {
@@ -99,50 +95,37 @@ class App {
         const selectedTime = parseInt(valWaktu.split(':')[0]); // Ambil jam dari waktu yang dipilih oleh pengguna
         result = result && carTime === selectedTime;
         // console.log(result);
-        console.log('Car Time:', carTime);
-        console.log('Selected Time:', selectedTime);
-        console.log('Filter by Time:', result);
+        // console.log('Car Time:', carTime);
+        // console.log('Selected Time:', selectedTime);
+        // console.log('Filter by Time:', result);
       }
-
-      // if (valWaktu) {
-      //   const carTime = new Date(car.availableAt).toLocaleTimeString('en-US', {
-      //     timeZone: 'Asia/Jakarta',
-      //     hour: '2-digit',
-      //     // minute: '2-digit',
-      //   }); // Ambil waktu lokal dari availableAt dalam format jam menit
-
-      //   const selectedHour = parseInt(valWaktu.split(':')[0]); // Ambil jam dari waktu yang dipilih oleh pengguna
-      //   const selectedTime = new Date().setHours(selectedHour, 0); // Menjadikan menit menjadi 00
-      //   const selectedTimeString = new Date(selectedTime).toLocaleTimeString(
-      //     'en-US',
-      //     {
-      //       timeZone: 'Asia/Jakarta',
-      //       hour: '2-digit',
-      //       // minute: '2-digit',
-      //     }
-      //   ); // Waktu yang dipilih oleh pengguna dalam format 'HH:00'
-
-      //   result = result && carTime === selectedTimeString;
-
-      //   console.log('Car Time:', carTime);
-      //   console.log('Selected Time:', selectedTimeString);
-      //   console.log('Filter by Time:', result);
-      // }
 
       return result;
     });
 
-    this.renderCars(cars); // Render the cars
-    feather.replace();
-    console.log(cars);
+    // this.renderCars(cars); // Render the cars
+    // feather.replace();
+
+    // Menampilkan mobil yang telah difilter atau pesan jika tidak ada mobil yang sesuai
+    if (cars.length === 0) {
+      this.carContainerElement.innerHTML =
+        '<p>Tidak ada mobil yang sesuai dengan kriteria yang Anda masukkan.</p>';
+    } else {
+      this.renderCars(cars); // Render the cars
+      // Refresh ikon setelah rendering mobil
+      feather.replace();
+      console.log(cars);
+    }
   };
 
+  // Method untuk memuat daftar mobil
   async load() {
-    const cars = await Binar.listCars();
+    // const cars = await Binar.listCars();
+    Car.init(cars);
     console.log(cars);
   }
 
-  // Method to render cars
+  // Method untuk menampilkan mobil
   renderCars(cars) {
     cars.forEach((car) => {
       const carInstance = new Car(car); // Create an instance of Car
@@ -151,6 +134,7 @@ class App {
     });
   }
 
+  // Method untuk menghapus tampilan mobil
   clear = () => {
     let child = this.carContainerElement.firstElementChild;
 
@@ -161,5 +145,8 @@ class App {
   };
 }
 
+// Membuat instance App dan memulai aplikasi
 const app = new App();
 app.init();
+
+// export default app;

@@ -25,7 +25,6 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="./css/styles.css" />
-    <link href="./css/style.example.css" rel="stylesheet" />
   </head>
   <body>
     <!-- Header -->
@@ -95,7 +94,7 @@
             terbaik dengan harga terjangkau. Selalu siap melayani kebutuhanmu
             untuk sewa mobil selama 24 jam.
           </p>
-          <a href="/cars" class="btn btn-success">Mulai Sewa Mobil</a>
+          <!-- <a href="/cars" class="btn btn-success">Mulai Sewa Mobil</a> -->
         </div>
 
         <div class="mobil col-lg-7 order-lg-first">
@@ -114,125 +113,136 @@
     <!-- End Hero -->
 
     <!-- searchbar -->
-    <div class="container">
-      <div class="card" id="searchbar">
-        <div class="card-body">
-          <div class="container">
-            <div class="row gx-3 d-flex align-items-end">
-              <!-- Tipe Driver -->
-              <div class="col-lg-3">
-                <div class="form-group">
-                  <label for="selectElement" class="text-start"
-                    >Tipe Driver</label
-                  >
-                  <select class="form-select" id="selectElementd">
-                    <option disabled selected>Pilih Tipe Driver</option>
-                    <option value="dengan kunci">Dengan Sopir</option>
-                    <option value="lepas kunci">
-                      Tanpa Sopir (Lepas Kunci)
-                    </option>
-                  </select>
+    <section>
+      <div class="container">
+        <div class="card" id="searchbar">
+          <div class="card-body">
+            <div class="container">
+              <div class="row gx-3 d-flex align-items-end">
+                <!-- Tipe Driver -->
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="selectElement" class="text-start"
+                      >Tipe Driver</label
+                    >
+                    <select class="form-select" id="selectElementd">
+                      <option disabled selected>Pilih Tipe Driver</option>
+                      <option value="with driver">Dengan Sopir</option>
+                      <option value="without driver">
+                        Tanpa Sopir (Lepas Kunci)
+                      </option>
+                    </select>
+                  </div>
                 </div>
-              </div>
 
-              <!-- Date -->
-              <div class="col-lg-2">
-                <div class="form-group">
-                  <label for="inputElement" class="text-start">Tanggal</label>
-                  <div class="input-group">
-                    <input
-                      type="date"
-                      class="form-control"
-                      id="inputElement"
-                      placeholder="Input tanggal..."
-                    />
-                    <!-- <span class="pick-icon input-group-text" id="basic-addon1">
+                <!-- Date -->
+                <div class="col-lg-2">
+                  <div class="form-group">
+                    <label for="inputElement" class="text-start">Tanggal</label>
+                    <div class="input-group">
+                      <input
+                        type="date"
+                        class="form-control"
+                        id="inputElement"
+                        placeholder="Input tanggal..."
+                      />
+                      <!-- <span class="pick-icon input-group-text" id="basic-addon1">
                       <div class="input-icon">
                         <i class="inp-icon user" data-feather="calendar"></i>
                       </div>
                     </span> -->
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Hours -->
-              <div class="col-lg-3">
-                <div class="form-group">
-                  <label for="selectElement" class="text-start"
-                    >Waktu Jemput/Ambil</label
-                  >
-                  <div class="input-group">
-                    <select class="pick form-control" id="selectElementWaktu">
-                      <option disabled selected hidden value="">
-                        Pilih Waktu
-                      </option>
-                      <script>
-                        for (let i = 0; i < 24; i++) {
-                          // Format jam dengan menambahkan '0' di depan jika jam kurang dari 10
-                          const formattedHour = i < 10 ? '0' + i : i;
-                          document.write(
-                            '<option value="' +
-                              formattedHour +
-                              ':00">' +
-                              formattedHour +
-                              ':00 WIB</option>'
-                          );
-                        }
-                      </script>
-                    </select>
-                    <span class="pick-icon input-group-text" id="basic-addon1">
-                      <div class="input-icon">
-                        <i class="inp-icon user" data-feather="clock"></i>
-                      </div>
-                    </span>
+                <!-- Hours -->
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="selectElement" class="text-start"
+                      >Waktu Jemput/Ambil</label
+                    >
+                    <div class="input-group">
+                      <select class="pick form-control" id="selectElementWaktu">
+                        <option disabled selected value="">Pilih Waktu</option>
+                        <script>
+                          // Loop dari 0 sampai 23 untuk menghasilkan 24 jam dalam sehari
+                          for (let i = 0; i < 24; i++) {
+                            // Format jam dengan menambahkan '0' di depan jika jam kurang dari 10
+                            const formattedHour = i < 10 ? '0' + i : i;
+
+                            // Menampilkan pilihan jam dalam format HTML
+                            document.write(
+                              '<option value="' +
+                                formattedHour +
+                                ':00">' +
+                                formattedHour +
+                                ':00 WIB</option>'
+                            );
+                          }
+                        </script>
+                      </select>
+                      <span
+                        class="pick-icon input-group-text"
+                        id="basic-addon1"
+                      >
+                        <div class="input-icon">
+                          <i class="inp-icon user" data-feather="clock"></i>
+                        </div>
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- total passenger  -->
-              <div class="col-lg-3">
-                <div class="form-group">
-                  <label for="inputElement" class="text-start"
-                    >Jumlah Penumpang (Opsional)</label
-                  >
-                  <div class="input-group">
-                    <input
-                      type="text"
-                      class="pick form-control bi-border-right"
-                      placeholder="Jumlah Penumpang"
-                      aria-label="Input group example"
-                      aria-describedby="basic-addon1"
-                      id="jumlah-penumpang"
-                    />
-                    <span class="pick-icon input-group-text" id="basic-addon1">
-                      <div class="input-icon">
-                        <i class="inp-icon user" data-feather="users"></i>
-                      </div>
-                    </span>
+                <!-- total passenger  -->
+                <div class="col-lg-3">
+                  <div class="form-group">
+                    <label for="inputElement" class="text-start"
+                      >Jumlah Penumpang (Opsional)</label
+                    >
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="pick form-control bi-border-right"
+                        placeholder="Jumlah Penumpang"
+                        aria-label="Input group example"
+                        aria-describedby="basic-addon1"
+                        id="jumlah-penumpang"
+                      />
+                      <span
+                        class="pick-icon input-group-text"
+                        id="basic-addon1"
+                      >
+                        <div class="input-icon">
+                          <i class="inp-icon user" data-feather="users"></i>
+                        </div>
+                      </span>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- button search -->
-              <div class="search col-lg-1">
-                <button class="btn btn-success" id="load-btn">
-                  <span class="text-sm">Cari Mobil</span>
-                </button>
-                <!-- <button id="clear-btn">Clear</button> -->
+                <!-- button search -->
+                <div class="search col-1">
+                  <button class="btn btn-success" id="load-btn">
+                    <span class="text-sm">Cari Mobil</span>
+                  </button>
+                  <!-- <button id="clear-btn">Clear</button> -->
+                </div>
+                <!--  -->
               </div>
-              <!--  -->
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
     <!-- searchbar -->
 
-    <!-- card -->
+    <!-- Result card -->
     <br /><br />
-    <div class="container">
-      <div class="row row-cols-1 row-cols-md-3 g-4" id="cars-container"></div>
-    </div>
+    <section id="result-card">
+      <div class="container">
+        <div class="row row-cols-1 row-cols-md-3 g-4" id="cars-container"></div>
+      </div>
+    </section>
 
     <!-- footer -->
     <footer class="py-5" id="footer">
@@ -330,9 +340,10 @@
 
     <!-- js -->
     <script type="text/javascript" src="./scripts/binar.js"></script>
-    <script type="text/javascript" src="./scripts/app.example.js"></script>
-    <script type="text/javascript" src="./scripts/car.example.js"></script>
-    <!-- <script type="text/javascript" src="./scripts/main.example.js"></script> -->
+    <script type="text/javascript" src="./scripts/app.js"></script>
+    <script type="text/javascript" src="./scripts/car.js"></script>
+    <!-- module -->
+    <script type="text/javascript" src="./scripts/main.js"></script>
   </body>
 
   <!-- Bootstrap -->

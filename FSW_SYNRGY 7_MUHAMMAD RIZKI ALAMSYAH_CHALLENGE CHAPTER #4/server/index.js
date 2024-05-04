@@ -8,6 +8,7 @@ const fs = require('fs');
 const path = require('path');
 const { PORT = 8000 } = process.env; // Ambil port dari environment variable
 
+// Direktori publik yang berisi berkas-berkas yang dapat diakses publik
 const PUBLIC_DIRECTORY = path.join(__dirname, '../public');
 
 // Fungsi untuk menentukan tipe konten berdasarkan ekstensi berkas
@@ -46,11 +47,14 @@ function onRequest(req, res) {
 
   const filePath = path.join(PUBLIC_DIRECTORY, req.url);
 
+  // Baca berkas dari sistem file
   fs.readFile(filePath, (err, data) => {
     if (err) {
+      // Jika berkas tidak ditemukan, kirimkan respons 404
       res.writeHead(404, { 'Content-Type': 'text/plain' });
       res.end('<h1>Halaman tidak ditemukan</h1>');
     } else {
+      // Jika berkas ditemukan, kirimkan berkas beserta tipe konten yang sesuai
       const contentType = getContentType(filePath);
       res.writeHead(200, { 'Content-Type': contentType });
       res.end(data);
