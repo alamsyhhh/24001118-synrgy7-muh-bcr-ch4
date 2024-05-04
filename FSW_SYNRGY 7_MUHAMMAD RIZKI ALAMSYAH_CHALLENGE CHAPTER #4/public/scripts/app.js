@@ -12,7 +12,7 @@ class App {
     this.inputTypeDriver = document.getElementById('selectElementd');
 
     // Menonaktifkan tombol "Load" pada awalnya
-    this.loadButton.disabled = true;
+    // this.loadButton.disabled = true;
   }
 
   async init() {
@@ -120,8 +120,8 @@ class App {
 
   // Method untuk memuat daftar mobil
   async load() {
-    // const cars = await Binar.listCars();
-    Car.init(cars);
+    const cars = await Binar.listCars();
+    // Car.init(cars);
     console.log(cars);
   }
 
