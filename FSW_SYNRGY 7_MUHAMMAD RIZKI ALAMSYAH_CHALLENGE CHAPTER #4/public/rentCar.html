@@ -125,7 +125,7 @@
                     <label for="selectElement" class="text-start"
                       >Tipe Driver</label
                     >
-                    <select class="form-select" id="selectElementd">
+                    <select class="form-select" id="Type-Driver">
                       <option disabled selected>Pilih Tipe Driver</option>
                       <option value="with driver">Dengan Sopir</option>
                       <option value="without driver">
@@ -143,7 +143,7 @@
                       <input
                         type="date"
                         class="form-control"
-                        id="inputElement"
+                        id="input-Date"
                         placeholder="Input tanggal..."
                       />
                       <!-- <span class="pick-icon input-group-text" id="basic-addon1">
@@ -155,14 +155,14 @@
                   </div>
                 </div>
 
-                <!-- Hours -->
+                <!-- Time -->
                 <div class="col-lg-3">
                   <div class="form-group">
                     <label for="selectElement" class="text-start"
                       >Waktu Jemput/Ambil</label
                     >
                     <div class="input-group">
-                      <select class="pick form-control" id="selectElementWaktu">
+                      <select class="pick form-control" id="input-Time">
                         <option disabled selected value="">Pilih Waktu</option>
                         <script>
                           // Loop dari 0 sampai 23 untuk menghasilkan 24 jam dalam sehari
@@ -206,7 +206,7 @@
                         placeholder="Jumlah Penumpang"
                         aria-label="Input group example"
                         aria-describedby="basic-addon1"
-                        id="jumlah-penumpang"
+                        id="total-passenger"
                       />
                       <span
                         class="pick-icon input-group-text"
@@ -222,10 +222,9 @@
 
                 <!-- button search -->
                 <div class="search col-1">
-                  <button class="btn btn-success" id="load-btn">
+                  <button class="btn btn-success" id="search-btn">
                     <span class="text-sm">Cari Mobil</span>
                   </button>
-                  <!-- <button id="clear-btn">Clear</button> -->
                 </div>
                 <!--  -->
               </div>
@@ -339,11 +338,7 @@
     <!-- End footer -->
 
     <!-- js -->
-    <script type="text/javascript" src="./scripts/binar.js"></script>
-    <script type="text/javascript" src="./scripts/app.js"></script>
-    <script type="text/javascript" src="./scripts/car.js"></script>
-    <!-- module -->
-    <!-- <script type="text/javascript" src="./scripts/main.js"></script> -->
+    <script type="module" src="./scripts/main.js"></script>
   </body>
 
   <!-- Bootstrap -->
@@ -358,7 +353,6 @@
 
   <!-- Feather Js -->
   <script>
-    // feather.replace();
     document.addEventListener('DOMContentLoaded', function () {
       feather.replace();
     });
