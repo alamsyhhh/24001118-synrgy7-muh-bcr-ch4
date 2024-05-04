@@ -115,7 +115,7 @@ class App {
       this.carContainerElement.innerHTML = `
       <ul style="color: red;">
           <li>🚧 Karena AvailableAt diatur secara acak, hasil pencarian mobil tidak tersedia sesuai dengan kriteria yang Anda masukkan</li>
-          <li>Harap coba lagi dengan memilih waktu dan tanggal yang berbeda.</li>
+          <li>Harap coba lagi sampai anda menemukan mobil sesuai dengan kriteria yang anda masukkan.</li>
           <li>Atau anda dapat memilih waktu dan tanggal lain untuk menemukan mobil yang tersedia dalam kurun waktu 3 hari dihitung dari kemarin.</li>
           <li>Anda Bisa Periksa Jadwal Peminjaman Mobil pada Console Log</li>
           <li>Just, hack it bro!</li>
